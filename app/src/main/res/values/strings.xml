@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Demo Programs</string>
+
+    <string name="registration_form">Registration Form</string>
+    <string name="enter_password">Enter password</string>
+    <string name="enter_email_as_username">Enter email as Username</string>
+    <string name="enter_last_name">Enter last name</string>
+    <string name="enter_first_name">Enter first name</string>
+    <string name="rad_male">Male</string>
+    <string name="rad_female">Female</string>
+    <string name="branch_ce_it">Branch CE / IT</string>
+    <string name="profile_status_active_inactive">Profile Status Active / Inactive</string>
+    <string name="register_me">Register Me</string>
+    <string name="ce">CE</string>
+    <string name="it">IT</string>
+
+
+
+    <string-array name="citylist">
+        <item>Junagadh</item>
+        <item>Rajkot</item>
+        <item>Ahmedabad</item>
+        <item>Baroda</item>
+        <item>Surat</item>
+    </string-array>
+</resources>
