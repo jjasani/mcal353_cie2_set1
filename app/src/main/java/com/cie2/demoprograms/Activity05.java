@@ -1,6 +1,7 @@
 package com.cie2.demoprograms;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -24,37 +25,26 @@ public class Activity05 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_05);
         txtJsonDataCount = findViewById(R.id.txtJsonDataCount);
-        new TestAsyncTask().execute();
-    }
+        String fileData = null;
 
-    class TestAsyncTask extends AsyncTask {
-        JSONArray jsonArray;
+        try {
+            InputStream is = getAssets().open("usersdata.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            fileData = new String(buffer, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        @Override
-        protected Object doInBackground(Object[] objects) {
+        if (fileData!=null){
             try {
-                InputStream is = getAssets().open("data.json");
-                int size = is.available();
-                byte[] buffer = new byte[size];
-                is.read(buffer);
-                is.close();
-                String json = new String(buffer, "UTF-8");
-                Log.i("json", json);
-                JSONObject jsonObject = new JSONObject(json);
-                jsonArray = jsonObject.getJSONArray("formulas");
-            } catch (IOException e) {
-                e.printStackTrace();
+                JSONObject object = new JSONObject(fileData);
+                //Code goes here
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Object o) {
-            super.onPostExecute(o);
-            String count = String.valueOf(jsonArray.length());
-            txtJsonDataCount.setText(count);
         }
     }
 }
